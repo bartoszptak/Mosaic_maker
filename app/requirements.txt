@@ -1,0 +1,5 @@
+flask
+flask-cors
+flask_bootstrap
+requests
+opencv-python==3.4.1.15
