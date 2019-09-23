@@ -6,7 +6,7 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/*
 
 RUN pip install -U pip
-COPY ./app/requirements.txt .
+COPY ./requirements.txt .
 RUN pip install -r requirements.txt
 EXPOSE 5000
 COPY ./app /app
