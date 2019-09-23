@@ -1,7 +1,10 @@
+import os
+import sys
+
 from flask import Flask, render_template, request, redirect, send_file, after_this_request
 from werkzeug.utils import secure_filename
+
 import mosaic as ms
-import os
 
 app = Flask(__name__)
 
@@ -18,21 +21,19 @@ def index():
 def makebeautiful():
     if request.method == 'POST':
         file = request.files['file']
+        args = request.form
         filename = secure_filename(file.filename)
-        file.save(os.path.join(app.config['DOWNLOAD_FOLDER'], filename))
+        save_path = os.path.join(app.config['DOWNLOAD_FOLDER'], filename)
+        file.save(save_path)
 
-
-    return redirect('/')
-
-@app.route('/getfile/<filename>')
-def getfile(filename):
+        ms.make_mosaic(save_path, args['tile'].lower(), int(args['size']))
     
-    @after_this_request
-    def cleanup(response):
-        os.remove(os.path.join(app.config['DOWNLOAD_FOLDER'], filename))
-        return response
+        @after_this_request
+        def cleanup(response):
+            os.remove(os.path.join(app.config['DOWNLOAD_FOLDER'], filename))
+            return response
 
-    return send_file(app.config['DOWNLOAD_FOLDER'], filename, as_attachment=True)
+        return send_file(save_path, as_attachment=True)
 
 if __name__ == '__main__':
     app.run(debug=False,host='0.0.0.0')
