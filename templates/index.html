@@ -30,15 +30,14 @@
         <div class="wrapper wrapper--w790">
             <div class="card card-5">
                 <div class="card-heading">
-                    <h2 class="title">Mosaic maker</h2>
+                    <h2 class="title">My mosaic maker</h2>
                     <a href='https://github.com/bartoszptak/Mosaic_maker' class="logo"></a>
                 </div>
                 
                 <div class="card-body">
                     <form method="POST" enctype="multipart/form-data" action="/makebeautiful">
                         <div class="form-row">
-                                Is Flask only able to import from static subdirectory? I had made a directory on the same level as static and put my js file inside which chrome was not successful in import. However, when I moved the directory into static, it was successfully imported. Maybe if this behaviour is true, can it should highlighted and explained.
-                        </div>
+                            This is a simple photo mosaic creator. The operation is based on the quantization of colors and transferring them to specific tiles. The application is built in Python using Flask and OpenCV. Tested with Docker and launched as an application in Heroku.                        </div>
                         <div class="form-row">
                             <div class="name">Image</div>
                             <div class="value">
@@ -68,7 +67,7 @@
                             <div class="value">
                                 <div class="input-group">
                                     <div class="range-control">
-                                        <input type="range" min="1" max="35" value="19" step="2" data-thumbwidth="20" class="slider" name="size" id='inputRange'">
+                                        <input type="range" min="11" max="65" value="19" step="2" data-thumbwidth="20" class="slider" name="size" id='inputRange'">
                                         <output name="rangeVal">19</output>
                                     </div>
                                 </div>

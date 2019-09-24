@@ -888,7 +888,7 @@ output {
   font-size: .8em;
   line-height: 24px;
   text-align: center;
-  left: 260px;
+  left: 80px;
 }
 
 input[type=range]:active + output {
